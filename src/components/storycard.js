@@ -13,9 +13,9 @@ const StoryCard = (props) => {
             : story.title
           }
         </p>
-        <p className="pb-0.5 text-base text-slate-500">
-          ({story.domain})
-        </p>
+        {story.domain
+          ? <p className="pb-0.5 text-base text-slate-500">({story.domain})</p>
+          : null}
         <p className="text-xs text-slate-600">
           {`${story.points} points by ${story.user} ${story.time_ago} | ${story.comments_count} comments`}
         </p>
