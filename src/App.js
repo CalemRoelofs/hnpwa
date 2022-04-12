@@ -10,9 +10,10 @@ import Show from './routes/show';
 import Jobs from './routes/jobs';
 import { useLocationChange } from './utils/route-utils';
 
-function App(props) {
+const App = (props) => {
 
   const [pageNumber, setPageNumber] = useState(1);
+  const [maxPages, setMaxPages] = useState(10);
 
   useLocationChange((location, prevLocation) => {
     console.log('changed from', prevLocation, 'to', location);
@@ -20,13 +21,21 @@ function App(props) {
     if (prevLocation && location.pathname !== prevLocation.pathname) {
       setPageNumber(1);
     }
+
+    if (["/show", "/ask"].includes(location.pathname)) {
+      setMaxPages(2);
+    } else if (location.pathname === "/jobs") {
+      setMaxPages(1);
+    } else {
+      setMaxPages(10);
+    }
   });
 
   return (
     <div className="md:container md:mx-auto xl:mx-0 xl:max-w-full bg-neutral-100">
       <div>
         <NavBar />
-        <PageNumbers pageNumber={pageNumber} changePage={(number) => { setPageNumber(number); }} />
+        <PageNumbers pageNumber={pageNumber} maxPages={maxPages} changePage={(number) => { setPageNumber(number); }} />
         <Routes>
           <Route path='/' element={<Top pageNumber={pageNumber} />} />
           <Route path='/top' element={<Top pageNumber={pageNumber} />} />

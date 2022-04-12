@@ -8,6 +8,10 @@ const StoryList = (props) => {
 
   const getStories = async (pageNumber) => {
     const stories = await props.getStories(pageNumber);
+    if (stories.length === 0) {
+      setStoryCards([]);
+      return;
+    }
     const storyList = stories.map((story, index) =>
       <StoryCard
         key={((props.pageNumber - 1) * 30) + index + 1}
@@ -23,8 +27,6 @@ const StoryList = (props) => {
       getStories(props.pageNumber);
     }
   })
-
-
 
   return (
     <ul className="p-1 divide-y-0 self-center bg-neutral-100">

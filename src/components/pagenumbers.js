@@ -7,8 +7,8 @@ const PageNumbers = (props) => {
         ? <span>{'<'}</span>
         : <span onClick={() => props.changePage(props.pageNumber - 1)}>{'<'}</span>
       }
-      <span className="px-5">{`${props.pageNumber}/10`}</span>
-      {props.pageNumber === 10
+      <span className="px-5">{`${props.pageNumber}/${props.maxPages}`}</span>
+      {props.pageNumber === props.maxPages
         ? <span className="text-disabled">{'>'}</span>
         : <span onClick={() => props.changePage(props.pageNumber + 1)}>{'>'}</span>
       }
