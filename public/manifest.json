@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "HNRTW",
+  "name": "Hacker News PWA built with React and Tailwind",
   "icons": [
     {
       "src": "favicon.ico",
