@@ -8,11 +8,19 @@ import Newest from './routes/newest';
 import Ask from './routes/ask';
 import Show from './routes/show';
 import Jobs from './routes/jobs';
-
+import { useLocationChange } from './utils/route-utils';
 
 function App(props) {
 
   const [pageNumber, setPageNumber] = useState(1);
+
+  useLocationChange((location, prevLocation) => {
+    console.log('changed from', prevLocation, 'to', location);
+
+    if (prevLocation && location.pathname !== prevLocation.pathname) {
+      setPageNumber(1);
+    }
+  });
 
   return (
     <div className="md:container md:mx-auto xl:mx-0 xl:max-w-full bg-neutral-100">
