@@ -16,7 +16,6 @@ const App = (props) => {
   const [maxPages, setMaxPages] = useState(10);
 
   useLocationChange((location, prevLocation) => {
-    console.log('changed from', prevLocation, 'to', location);
 
     if (prevLocation && location.pathname !== prevLocation.pathname) {
       setPageNumber(1);
