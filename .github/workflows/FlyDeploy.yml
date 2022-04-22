@@ -20,7 +20,7 @@ jobs:
           env:
             TOKEN: ${{ secrets.REPOCONFIGS_ACCESS_TOKEN }}
           run: |
-            curl -H "Authorization: token ${TOKEN}" https://raw.githubusercontent.com/CalemRoelofs/RepoConfigs/main/hnrtwpwa/fly.toml
+            curl -H "Authorization: token ${TOKEN}" https://raw.githubusercontent.com/CalemRoelofs/RepoConfigs/main/hnrtwpwa/fly.toml --output fly.toml
         
         - name: Deploy app to fly.io
           run: flyctl deploy --remote-only
